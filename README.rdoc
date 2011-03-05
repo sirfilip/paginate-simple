@@ -27,56 +27,56 @@ In order to create a singleton pagination object we need to create a class Pagin
 will extend this module and change some of its built in logic like this:
 
 
-class Paginator
-  extend PaginateSimple
+  class Paginator
+    extend PaginateSimple
   
-  def self.current_page(page)
-    super page.to_i # allow strings to be passed like "1" as well
+    def self.current_page(page)
+      super page.to_i # allow strings to be passed like "1" as well
+    end
   end
-end
 
 If we need to have more than one Paginator we will include the module instead and
 then instantiate the object as needed. 
 
 
-class Paginator
-  include PaginateSimple
+  class Paginator
+    include PaginateSimple
   
-  def current_page(page)
-    super page.to_i # allow strings to be passed like "1" as well
+    def current_page(page)
+      super page.to_i # allow strings to be passed like "1" as well
+    end
   end
-end
 
-@paginator = Paginator.new
-@paginator.config :total => 100 , :page => 1, :per_page => 10
+  @paginator = Paginator.new
+  @paginator.config :total => 100 , :page => 1, :per_page => 10
 
-@another_paginator = Paginator.new 
-@another_paginator.config :total => 100 , :page => 1, :per_page => 3
+  @another_paginator = Paginator.new 
+  @another_paginator.config :total => 100 , :page => 1, :per_page => 3
 
 By default no helper for the paginator exists. But to write one is quite simple.
 Here is the example of a paginator helper that i use in my blog.
 
-require 'sinatra/base'
+  require 'sinatra/base'
 
-module Sinatra
-  module PaginationHelper
-    def paginate(resource)
-      data = []
-      data << '<div class="pagination">'
-        data << "<a href =\"/#{resource}/?page=#{Paginator.previous_page}\">Prev</a>" if Paginator.has_previous_page?
-        data << ' | ' if Paginator.has_previous_page? and Paginator.has_next_page?
-        data << "<a href =\"/#{resource}/?page=#{Paginator.next_page}\">Next</a>" if Paginator.has_next_page?
-      data << '</div>'
-      data.join(' ')
+  module Sinatra
+    module PaginationHelper
+      def paginate(resource)
+        data = []
+        data << '<div class="pagination">'
+          data << "<a href =\"/#{resource}/?page=#{Paginator.previous_page}\">Prev</a>" if Paginator.has_previous_page?
+          data << ' | ' if Paginator.has_previous_page? and Paginator.has_next_page?
+          data << "<a href =\"/#{resource}/?page=#{Paginator.next_page}\">Next</a>" if Paginator.has_next_page?
+        data << '</div>'
+        data.join(' ')
+      end
     end
-  end
   
-  helpers PaginationHelper
-end
+    helpers PaginationHelper
+  end
 
 and i use it like this in my haml file
 
-paginate 'posts'
+  = paginate 'posts'
 
 == Contributing to paginate-simple
  
