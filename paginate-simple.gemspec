@@ -25,6 +25,7 @@ Gem::Specification.new do |s|
     "Rakefile",
     "VERSION",
     "lib/paginate-simple.rb",
+    "paginate-simple.gemspec",
     "test/helper.rb",
     "test/paginate_simple.spec"
   ]
