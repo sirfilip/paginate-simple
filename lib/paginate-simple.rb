@@ -1,5 +1,4 @@
 module PaginateSimple
-  class << self 
     attr_accessor :current_page, :total, :per_page
   
     def config(args = {})
@@ -54,6 +53,5 @@ module PaginateSimple
       raise ArgumentError if total_results < 0
       @total = total_results
     end
-  
-  end
+
 end
