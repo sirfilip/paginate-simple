@@ -25,6 +25,8 @@ and its usage.
 Usage:
 In order to create a singleton pagination object we need to create a class Paginator that
 will extend this module and change some of its built in logic like this:
+
+
 class Paginator
   extend PaginateSimple
   
@@ -35,6 +37,8 @@ end
 
 If we need to have more than one Paginator we will include the module instead and
 then instantiate the object as needed. 
+
+
 class Paginator
   include PaginateSimple
   
@@ -71,7 +75,8 @@ module Sinatra
 end
 
 and i use it like this in my haml file
-= paginate 'posts'
+
+paginate 'posts'
 
 == Contributing to paginate-simple
  
