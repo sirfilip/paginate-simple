@@ -30,7 +30,7 @@ will extend this module and change some of its built in logic like this:
   class Paginator
     extend PaginateSimple
   
-    def self.current_page(page)
+    def self.current_page=(page)
       super page.to_i # allow strings to be passed like "1" as well
     end
   end
@@ -42,7 +42,7 @@ then instantiate the object as needed.
   class Paginator
     include PaginateSimple
   
-    def current_page(page)
+    def current_page=(page)
       super page.to_i # allow strings to be passed like "1" as well
     end
   end
