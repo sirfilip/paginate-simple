@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{paginate-simple}
-  s.version = "0.1.1"
+  s.version = "0.1.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["filip"]
-  s.date = %q{2011-03-05}
+  s.date = %q{2011-03-08}
   s.description = %q{It is just a plain Pagination module that provides pagination logic.}
   s.email = %q{github.sirfilip@gmail.com}
   s.extra_rdoc_files = [
@@ -32,7 +32,7 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/sirfilip/paginate-simple}
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.5.3}
+  s.rubygems_version = %q{1.6.1}
   s.summary = %q{Simple pagination solution independent from any ORM.}
   s.test_files = [
     "test/helper.rb"
