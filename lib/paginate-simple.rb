@@ -45,7 +45,9 @@ module PaginateSimple
     end
     
     def current_page=(page)
-      raise ArgumentError if page < 1
+      raise TypeError, "The page must be an 'Integer' like object" if not page.respond_to? :to_i
+      page = page.to_i
+      raise ArgumentError, "The page must be greater than 1, #{page} given" if page < 1
       @current_page = page
     end
     
